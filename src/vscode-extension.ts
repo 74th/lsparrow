@@ -5,22 +5,42 @@ import * as ls from "vscode-languageclient";
 let client: ls.LanguageClient;
 
 export function activate(context: vscode.ExtensionContext) {
-    let serverModule = context.asAbsolutePath(path.join('out', 'server.js'));
 
-    let serverOptions: ls.ServerOptions = {
-        run: {
-            module: serverModule,
-            transport: ls.TransportKind.ipc
-        },
-        debug: {
-            module: serverModule,
-            transport: ls.TransportKind.ipc,
-            options: {
-                execArgv: ["--nolazy", "--inspect=6010"]
+    let serverOptions: ls.ServerOptions;
+    if (false) {
+        let serverModule = context.asAbsolutePath(path.join('out', 'server.js'));
+        serverOptions = {
+            run: {
+                module: serverModule,
+                transport: ls.TransportKind.ipc
+            },
+            debug: {
+                module: serverModule,
+                transport: ls.TransportKind.ipc,
+                options: {
+                    execArgv: ["--nolazy", "--inspect=6010"]
+                }
+            }
+        };
+    } else {
+        serverOptions = {
+            run: {
+                command: context.asAbsolutePath(path.join('out', 'lsparrow')),
+                args: ["--stdio"],
+            },
+            debug: {
+                command: "node",
+                args: [
+                    // "--inspect-brk=localhost:6010",
+                    context.asAbsolutePath(path.join('out', 'server.js')),
+                    "--stdio"
+                ],
+                options: {
+                    detached: true,
+                }
             }
         }
-    };
-
+    }
     const documentSelector = [
         { scheme: "file" },
     ] as ls.DocumentSelector;

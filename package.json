@@ -25,6 +25,6 @@
   "scripts": {
     "build": "run-s build:tsc build:nexe",
     "build:tsc": "tsc",
-    "build:nexe": "nexe out/server.js"
+    "build:nexe": "nexe out/server.js -o out/lsparrow"
   }
 }

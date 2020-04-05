@@ -7,7 +7,6 @@ connection.onInitialize((params: ls.InitializeParams) => {
     return {
         capabilities: {
             textDocumentSync: ls.TextDocumentSyncKind.Full,
-
         }
     };
 });
