@@ -1,14 +1,25 @@
 {
   "name": "lsparrow",
   "version": "0.1.0",
-  "description": "LSP Diagnostics Intermidiate Server",
-  "main": "out/index.js",
+  "description": "LSP Diagnostics Intermediate Server",
+  "main": "out/vscode-extension.js",
   "author": "Atsushi Morimoto (@74th)",
   "license": "MIT",
+  "engines": {
+    "vscode": "^1.29.0"
+  },
+  "categories": [
+    "Linters"
+  ],
+  "activationEvents": [
+    "*"
+  ],
   "dependencies": {
+    "@types/vscode": "^1.43.0",
     "nexe": "^3.3.2",
     "npm-run-all": "^4.1.5",
     "typescript": "^3.8.3",
+    "vscode-languageclient": "^6.1.3",
     "vscode-languageserver": "^6.1.1"
   },
   "scripts": {
