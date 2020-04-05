@@ -1,0 +1,19 @@
+{
+  "name": "lsparrow",
+  "version": "0.1.0",
+  "description": "LSP Diagnostics Intermidiate Server",
+  "main": "out/index.js",
+  "author": "Atsushi Morimoto (@74th)",
+  "license": "MIT",
+  "dependencies": {
+    "nexe": "^3.3.2",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^3.8.3",
+    "vscode-languageserver": "^6.1.1"
+  },
+  "scripts": {
+    "build": "run-s build:tsc build:nexe",
+    "build:tsc": "tsc",
+    "build:nexe": "nexe out/server.js"
+  }
+}
