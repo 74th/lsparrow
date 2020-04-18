@@ -68,8 +68,6 @@ async function validateTextDocument(uri: ls.DocumentUri): Promise<void> {
     let config = await getDocumentSettings(uri);
 
     // lsparrowの実行
-    console.log(config);
-    console.log(uri);
     let diagnostics: ls.Diagnostic[] = [];
     const message = "lsparrow error"
 
