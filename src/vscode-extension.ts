@@ -25,19 +25,17 @@ export function activate(context: vscode.ExtensionContext) {
     } else {
         serverOptions = {
             run: {
-                command: context.asAbsolutePath(path.join('out', 'lsparrow')),
-                args: ["--stdio"],
-            },
-            debug: {
                 command: "node",
                 args: [
-                    // "--inspect-brk=localhost:6010",
                     context.asAbsolutePath(path.join('out', 'server.js')),
+                    "--stdio",
+                ],
+            },
+            debug: {
+                command: context.asAbsolutePath(path.join('out', 'lsparrow')),
+                args: [
                     "--stdio"
                 ],
-                options: {
-                    detached: true,
-                }
             }
         }
     }
