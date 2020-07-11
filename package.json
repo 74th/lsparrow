@@ -26,5 +26,8 @@
     "build": "run-s build:tsc build:nexe",
     "build:tsc": "tsc",
     "build:nexe": "nexe out/server.js -o out/lsparrow"
+  },
+  "devDependencies": {
+    "vscode-languageserver-protocol": "^3.15.3"
   }
 }

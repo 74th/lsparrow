@@ -1,0 +1,52 @@
+@startuml
+
+class "vscode-language-server"
+
+class Server
+
+Server ..> "vscode-language-server"
+
+class Exe
+
+Exe -|> Presenter
+Server -|> Presenter
+
+
+interface Presenter {
+    Receive(Diagnostic)
+    Fixed(id)
+}
+
+class LSParrow {
+    Files: FileDiagnostics[]
+    SetPresenter(Presenter)
+    Open(Files)
+}
+
+LSParrow ..> Presenter
+
+class Dispatcher {
+    Open(File)
+}
+
+Dispatcher "1" ..> "N" Linter
+
+interface Linter {
+    constructor(conf)
+    lint(File): Diagnostics
+}
+
+Pylint -|> Linter
+
+class Pylint
+
+interface FileDiagnostics {
+    file: File
+}
+
+interface Diagnostic {
+    id: int
+    file: File
+}
+
+@enduml
